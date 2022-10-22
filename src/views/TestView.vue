@@ -1,10 +1,6 @@
 <script setup lang="ts">
-import FormInput from "../components/FormInput.vue";
+import ImageMVM from "../components/img/imageMVM.vue";
 </script>
 <template>
-  <FormInput
-    :input-name="'name'"
-    :input-type="'checkbox'"
-    :input-placeholder="'nombre'"
-  />
+  <ImageMVM />
 </template>
