@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import ImageMVM from "../components/img/imageMVM.vue";
+import PersonForm from "../components/img/PersonForm.vue";
 </script>
 <template>
-  <ImageMVM />
+  <PersonForm />
 </template>

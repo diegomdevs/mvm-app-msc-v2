@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { reactive, ref } from "vue";
+import FormInput from "./FormInput.vue";
 const form = reactive({
   className: "thing-form",
 });
@@ -14,7 +15,7 @@ const inputs = ref([
 
 <template>
   <form :class="form.className">
-    <Input
+    <FormInput
       v-for="input in inputs"
       :input-name="input.name"
       :input-type="input.type"
