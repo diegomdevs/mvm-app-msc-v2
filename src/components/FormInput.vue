@@ -15,6 +15,9 @@ interface IInputTypes {
 }
 const props = defineProps<IFormInputProps>();
 const { inputName, inputType, inputPlaceholder } = toRefs(props);
+const label = reactive({
+  className: "input-container",
+});
 const inputTypes: IInputTypes | any = reactive({
   text: {
     inputName: inputName.value,
@@ -35,7 +38,7 @@ const inputTypes: IInputTypes | any = reactive({
 const input: IInputType = reactive(inputTypes[inputType.value]);
 </script>
 <template>
-  <label class="input-container" :for="input.inputName">
+  <label :class="label.className" :for="input.inputName">
     <span v-if="inputType === 'checkbox'">
       {{ useToUpperLowerCase(input.inputPlaceholder) }}
     </span>
