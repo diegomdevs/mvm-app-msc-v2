@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import StudentForm from "../components/StudentForm.vue";
+import CurrencyForm from "../components/CurrencyForm.vue";
 </script>
 <template>
-  <StudentForm />
+  <CurrencyForm />
 </template>
