@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import RouteLink from "../components/RouteLink.vue";
+import MenuOption from "../components/MenuOption.vue";
 </script>
 <template>
-  <RouteLink :link-name="'ojo'" :link-url="'xd'" />
+  <MenuOption :menu-option-name="'Diego'" :menu-option-url="'hola'" />
 </template>

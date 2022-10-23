@@ -25,7 +25,6 @@ const link = reactive({
 section.link-container {
   text-align: center;
   vertical-align: -webkit-baseline-middle;
-  text-decoration: underline;
 }
 section.link-container > .link {
   color: var(--font-color-white);
