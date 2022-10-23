@@ -7,7 +7,7 @@ interface INavigationOptionsProps {
 }
 const props = defineProps<INavigationOptionsProps>();
 const registrationOption = reactive({
-  className: "registration__option",
+  className: "navigation-menu__option",
 });
 const { navigationOptionName, navigationOptionUrl } = toRefs(props);
 </script>
@@ -19,7 +19,7 @@ const { navigationOptionName, navigationOptionUrl } = toRefs(props);
   />
 </template>
 <style scoped>
-.registration__option {
+.navigation-menu__option {
   width: 150px;
   height: 50px;
   border: white solid 2px;
