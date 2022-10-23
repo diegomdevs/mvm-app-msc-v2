@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import ParentForm from "../components/ParentForm.vue";
+import FormButton from "../components/FormButton.vue";
 </script>
 <template>
-  <ParentForm />
+  <FormButton :button-name="'registrar'" />
 </template>
