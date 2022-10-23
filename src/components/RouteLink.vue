@@ -23,8 +23,9 @@ const link = reactive({
 </template>
 <style scoped>
 section.link-container {
-  text-align: center;
-  vertical-align: -webkit-baseline-middle;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 section.link-container > .link {
   color: var(--font-color-white);

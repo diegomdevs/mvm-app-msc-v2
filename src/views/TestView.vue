@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import MainUserInfo from "../components/MainUserInfo.vue";
+import RegistrationView from "./RegistrationView.vue";
 </script>
 <template>
-  <MainUserInfo />
+  <RegistrationView />
 </template>
