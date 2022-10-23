@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import PersonForm from "../components/img/PersonForm.vue";
+import CustomerForm from "../components/CustomerForm.vue";
 </script>
 <template>
-  <PersonForm />
+  <CustomerForm :customer-type="'student'" />
 </template>

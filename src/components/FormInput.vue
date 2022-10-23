@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import useToUpperLowerCase from "@/logic/use-to-upper-lower-case";
-import { reactive, toRefs, defineProps } from "vue";
+import { reactive, toRefs } from "vue";
 
 interface IFormInputProps {
   inputName: string;
