@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import MenuOption from "../components/MenuOption.vue";
+import MainMenu from "../components/MainMenu.vue";
 </script>
 <template>
-  <MenuOption :menu-option-name="'Diego'" :menu-option-url="'hola'" />
+  <MainMenu />
 </template>
