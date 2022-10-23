@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import MainMenu from "../components/MainMenu.vue";
+import MainUserInfo from "../components/MainUserInfo.vue";
 </script>
 <template>
-  <MainMenu />
+  <MainUserInfo />
 </template>
