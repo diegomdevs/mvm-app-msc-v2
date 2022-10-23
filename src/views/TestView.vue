@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import CurrencyForm from "../components/CurrencyForm.vue";
+import RouteLink from "../components/RouteLink.vue";
 </script>
 <template>
-  <CurrencyForm />
+  <RouteLink :link-name="'ojo'" :link-url="'xd'" />
 </template>
