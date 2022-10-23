@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import FormButton from "../components/FormButton.vue";
+import RepresentativeForm from "../components/RepresentativeForm.vue";
 </script>
 <template>
-  <FormButton :button-name="'registrar'" />
+  <RepresentativeForm />
 </template>
