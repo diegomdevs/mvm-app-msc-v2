@@ -1,6 +1,6 @@
 {
   "name": "nvm-app-msc",
-  "version": "2.24.0",
+  "version": "2.25.0",
   "scripts": {
     "dev": "vite",
     "build": "run-p type-check build-only",
