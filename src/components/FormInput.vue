@@ -64,8 +64,8 @@ label.input-container > span {
 }
 
 label.input-container > input.checkbox {
-  height: 10px;
-  width: 10px;
+  height: 20px;
+  width: 20px;
 }
 label.input-container > input.image {
   height: 50px;
