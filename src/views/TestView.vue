@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import RepresentativeForm from "../components/RepresentativeForm.vue";
+import StudentForm from "../components/StudentForm.vue";
 </script>
 <template>
-  <RepresentativeForm />
+  <StudentForm />
 </template>

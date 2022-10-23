@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { reactive, ref, toRefs } from "vue";
-import PersonForm from "./img/PersonForm.vue";
+import PersonForm from "./PersonForm.vue";
 import FormInput from "./FormInput.vue";
 
 interface CustomerFormProps {

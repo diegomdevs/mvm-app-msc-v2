@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import ThingForm from "../ThingForm.vue";
-import FormInput from "../FormInput.vue";
+import ThingForm from "./ThingForm.vue";
+import FormInput from "./FormInput.vue";
 const form = {
   className: "personForm",
 };

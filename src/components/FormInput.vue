@@ -12,6 +12,7 @@ interface IInputTypes {
   text: IInputType;
   checkbox: IInputType;
   image: IInputType;
+  date: IInputType;
 }
 const props = defineProps<IFormInputProps>();
 const { inputName, inputType, inputPlaceholder } = toRefs(props);
@@ -33,6 +34,10 @@ const inputTypes: IInputTypes | any = reactive({
     inputName: inputName.value,
     inputType: inputType.value,
     inputPlaceholder: inputPlaceholder?.value,
+  },
+  date: {
+    inputName: inputName.value,
+    inputType: inputType.value,
   },
 });
 const input: IInputType = reactive(inputTypes[inputType.value]);
@@ -71,7 +76,8 @@ label.input-container > input.image {
   height: 50px;
   width: 50px;
 }
-label.input-container > input.text {
+label.input-container > input.text,
+label.input-container > input.date {
   width: 220px;
   height: 45px;
   border-radius: 4px;
