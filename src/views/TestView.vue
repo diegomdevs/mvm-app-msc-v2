@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import CustomerForm from "../components/CustomerForm.vue";
+import ParentForm from "../components/ParentForm.vue";
 </script>
 <template>
-  <CustomerForm :customer-type="'student'" />
+  <ParentForm />
 </template>
