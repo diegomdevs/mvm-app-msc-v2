@@ -8,7 +8,7 @@ const aside = reactive({
 const mainMenuOptions = ref([
   {
     mainMenuOptionName: "registrar",
-    mainMenuOptionUrl: "registrate",
+    mainMenuOptionUrl: "registration",
   },
   {
     mainMenuOptionName: "consultas",
@@ -30,10 +30,13 @@ const mainMenuOptions = ref([
 <style scoped>
 aside.main-menu-container {
   display: flex;
-  display: flex;
   flex-direction: column;
+  row-gap: 40px;
   width: 100px;
   height: 100vh;
+  padding-top: 20px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
   background-color: var(--primary-blue);
 }
 </style>
