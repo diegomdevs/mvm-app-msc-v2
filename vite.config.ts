@@ -7,7 +7,7 @@ import vue from "@vitejs/plugin-vue";
 export default defineConfig({
   plugins: [vue()],
   server: {
-    port: Number(process.env.PORT) || 3000,
+    port: Number(process.env.PORT),
   },
   resolve: {
     alias: {
