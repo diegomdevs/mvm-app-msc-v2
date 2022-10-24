@@ -6,8 +6,11 @@ import vue from "@vitejs/plugin-vue";
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [vue()],
+  preview: {
+    port: Number(process.env.PORT) || 3000,
+  },
   server: {
-    port: Number(process.env.PORT),
+    port: Number(process.env.PORT) || 3000,
   },
   resolve: {
     alias: {
