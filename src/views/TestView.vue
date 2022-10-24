@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import RegistrationView from "./RegistrationView.vue";
+import QueriesEntityView from "./QueriesEntityView.vue";
 </script>
 <template>
-  <RegistrationView />
+  <QueriesEntityView />
 </template>

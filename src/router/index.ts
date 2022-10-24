@@ -27,6 +27,21 @@ const appRoutes: RouteRecordRaw[] = [
     component: () => import("../views/RegistrationEntityFormView.vue"),
   },
   {
+    path: "/queries",
+    name: "queries",
+    component: () => import("../views/QueriesView.vue"),
+  },
+  {
+    path: "/queries/:entity",
+    name: "queriesEntity",
+    component: () => import("../views/QueriesEntityView.vue"),
+  },
+  {
+    path: "/queries/:entity/:specificEntity",
+    name: "queriesEntitySpecificEntity",
+    component: () => import("../views/RegistrationEntityFormView.vue"),
+  },
+  {
     path: "/test",
     name: "test",
     component: () => import("../views/TestView.vue"),
