@@ -6,7 +6,5 @@ const form = reactive({
 });
 </script>
 <template>
-  <form :class="form.className">
-    <ThingForm />
-  </form>
+  <form :class="form.className"></form>
 </template>
