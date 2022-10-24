@@ -6,6 +6,7 @@ interface IFormInputProps {
   inputName: string;
   inputType: string;
   inputPlaceholder?: string;
+  inputValue: undefined | string | Date | boolean;
 }
 interface IInputType extends IFormInputProps {}
 interface IInputTypes {
@@ -15,7 +16,7 @@ interface IInputTypes {
   date: IInputType;
 }
 const props = defineProps<IFormInputProps>();
-const { inputName, inputType, inputPlaceholder } = toRefs(props);
+const { inputName, inputType, inputPlaceholder, inputValue } = toRefs(props);
 const label = reactive({
   className: "input-container",
 });
@@ -24,23 +25,30 @@ const inputTypes: IInputTypes | any = reactive({
     inputName: inputName.value,
     inputType: inputType.value,
     inputPlaceholder: inputPlaceholder?.value,
+    inputValue: inputValue.value,
   },
   checkbox: {
     inputName: inputName.value,
     inputType: inputType.value,
     inputPlaceholder: inputPlaceholder?.value,
+    inputValue: inputValue.value,
   },
   image: {
     inputName: inputName.value,
     inputType: inputType.value,
     inputPlaceholder: inputPlaceholder?.value,
+    inputValue: inputValue.value,
   },
   date: {
     inputName: inputName.value,
     inputType: inputType.value,
+    inputValue: inputValue.value,
   },
 });
 const input: IInputType = reactive(inputTypes[inputType.value]);
+function xd(data: any) {
+  console.log(data);
+}
 </script>
 <template>
   <label :class="label.className" :for="input.inputName">
@@ -51,6 +59,8 @@ const input: IInputType = reactive(inputTypes[inputType.value]);
       :class="input.inputType"
       :type="input.inputType"
       :placeholder="useToUpperLowerCase(input.inputPlaceholder)"
+      v-model="input.inputValue"
+      @click.prevent="xd(input.inputValue)"
     />
   </label>
 </template>

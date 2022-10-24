@@ -7,7 +7,7 @@ const main = reactive({
 const navigationOptionMenuMessage = ref("¿qué vas a registrar?");
 const navigationOptionMenuOptions = ref([
   { name: "clientes", url: "registration/customers" },
-  { name: "Monedas o tasas", url: "registration/currencies/form" },
+  // { name: "Monedas o tasas", url: "registration/currencies/form" },
 ]);
 </script>
 <template>

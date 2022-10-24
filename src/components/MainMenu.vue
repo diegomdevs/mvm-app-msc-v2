@@ -10,10 +10,10 @@ const mainMenuOptions = ref([
     mainMenuOptionName: "registrar",
     mainMenuOptionUrl: "registration",
   },
-  {
-    mainMenuOptionName: "consultas",
-    mainMenuOptionUrl: "queries",
-  },
+  // {
+  //   mainMenuOptionName: "consultas",
+  //   mainMenuOptionUrl: "queries",
+  // },
 ]);
 </script>
 <template>
