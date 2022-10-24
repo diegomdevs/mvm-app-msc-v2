@@ -8,6 +8,7 @@ export default defineConfig({
   plugins: [vue()],
   preview: {
     port: Number(process.env.PORT) || 3000,
+    host: process.env.PORT || true,
   },
   server: {
     port: Number(process.env.PORT) || 3000,
