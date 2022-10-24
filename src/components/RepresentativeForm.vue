@@ -21,7 +21,7 @@ const buttons = ref({
 <template>
   <form :class="form.className">
     <h1 :class="h1.className">
-      Para registrar un representante, necesita el número de cédula de identidad
+      Para registrar un representante necesita el número de cédula de identidad
       de un padre ya registrado en el sistema. Si no está registrado puede
       registrarlo en la
       <RouterLink to=""> sección de registro de padres. </RouterLink>

@@ -10,6 +10,22 @@ const appRoutes: RouteRecordRaw[] = [
     name: "home",
     component: () => import("../views/HomeView.vue"),
   },
+
+  {
+    path: "/registration",
+    name: "registration",
+    component: () => import("../views/RegistrationView.vue"),
+  },
+  {
+    path: "/registration/:entity",
+    name: "registrationEntity",
+    component: () => import("../views/RegistrationEntityView.vue"),
+  },
+  {
+    path: "/registration/:entity/:entityForm",
+    name: "registrationEntityForm",
+    component: () => import("../views/RegistrationEntityFormView.vue"),
+  },
   {
     path: "/test",
     name: "test",
