@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import QueriesEntityView from "./QueriesEntityView.vue";
+import ThingForm from "@/components/ThingForm.vue";
 </script>
 <template>
-  <QueriesEntityView />
+  <ThingForm />
 </template>

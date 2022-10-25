@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { reactive, ref, toRefs } from "vue";
 import PersonForm from "./PersonForm.vue";
-import FormInput from "./FormInput.vue";
+import BaseInput from "./FormInput.vue";
 
 interface CustomerFormProps {
   customerType: string;
@@ -54,7 +54,7 @@ const customerInputs = ref([
       v-model="personInputsValues"
       :input-values="personInputsValues"
     />
-    <FormInput
+    <BaseInput
       v-for="input in customerInputs"
       :input-name="input.name"
       :input-type="input.type"

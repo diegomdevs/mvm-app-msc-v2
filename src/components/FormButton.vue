@@ -11,7 +11,7 @@ const props = defineProps<ButtonProps>();
 const { buttonName } = toRefs(props);
 </script>
 <template>
-  <button @click.prevent="" :class="button.className">
+  <button :class="button.className">
     {{ useToUpperLowerCase(buttonName) }}
   </button>
 </template>

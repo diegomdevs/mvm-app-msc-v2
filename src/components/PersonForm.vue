@@ -51,7 +51,7 @@ const personFormInputs = ref([
       v-model="thingFormInputsValues"
       :input-values="thingFormInputsValues"
     />
-    <FormInput
+    <BaseInput
       v-for="input in personFormInputs"
       :input-name="input.name"
       :input-type="input.type"
