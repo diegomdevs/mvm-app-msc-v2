@@ -1,37 +1,45 @@
 <script setup lang="ts">
 import useToUpperLowerCase from "@/logic/use-to-upper-lower-case";
-import { reactive, ref, toRefs } from "vue";
+import { reactive, toRefs } from "vue";
 interface IFormInputProps {
   name: string;
   placeholder: string | undefined;
   value: string | number | Date | boolean;
   type: string;
 }
+
 const props = defineProps<IFormInputProps>();
 const { name, placeholder, type, value } = toRefs(props);
-const inputAttr: IFormInputProps = reactive({
+const inputAttrs: IFormInputProps = reactive({
   name: name.value,
   placeholder: useToUpperLowerCase(placeholder.value),
   type: type.value,
   value: value.value,
 });
 
-const valueToBeEmitted = ref(inputAttr.value);
-const emits = defineEmits(["emittingValue"]);
+const emits = defineEmits<{
+  (
+    e: "emittingInputData",
+    inputDataToBeEmitted: {
+      name: string;
+      value: string | number | Date | boolean;
+    }
+  ): void;
+}>();
 </script>
 <template>
   <label class="input-container">
     <h3>
-      {{ inputAttr.placeholder }}
+      {{ inputAttrs.placeholder }}
     </h3>
     <input
-      :placeholder="inputAttr.placeholder"
-      v-model="valueToBeEmitted"
-      :type="inputAttr.type"
+      :placeholder="inputAttrs.placeholder"
+      v-model="inputAttrs.value"
+      :type="inputAttrs.type"
       @input="
-        emits('emittingValue', {
-          inputName: inputAttr.name,
-          inputValue: valueToBeEmitted,
+        emits('emittingInputData', {
+          name: inputAttrs.name,
+          value: inputAttrs.value,
         })
       "
     />

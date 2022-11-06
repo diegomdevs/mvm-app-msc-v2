@@ -1,21 +1,41 @@
 <script setup lang="ts">
-import type IFormInputProps from "@/interfaces/IFormInputProps";
 import useToUpperLowerCase from "@/logic/use-to-upper-lower-case";
 import { reactive } from "vue";
 import FormInput from "./FormInput.vue";
-const thingFormInputs: { inputs: IFormInputProps[] } = reactive({
-  inputs: [
-    {
+const thingFormInputs = reactive({
+  inputs: {
+    name: {
       name: "name",
       placeholder: useToUpperLowerCase("nombre"),
       type: "text",
       value: "",
     },
-  ],
+  },
 });
-const thingFormInputValuesToBeEmitted: { inputs: IFormInputProps[] } = reactive(
-  { inputs: [] }
-);
+const thingFormData: {
+  inputs: {
+    [key: string]: {
+      name: string;
+      value: string | number | Date | boolean;
+    };
+  };
+} = reactive({
+  inputs: {},
+});
+const emits = defineEmits<{
+  (
+    e: "emittingThingFormData",
+    emittedThingFormData: {
+      inputs: {
+        [key: string]: {
+          [key: string]: any;
+          name: string;
+          value: string | number | Date | boolean;
+        };
+      };
+    }
+  ): void;
+}>();
 </script>
 
 <template>
@@ -27,10 +47,12 @@ const thingFormInputValuesToBeEmitted: { inputs: IFormInputProps[] } = reactive(
       :type="input.type"
       :value="input.value"
       :key="input.name"
-      @emitting-value="
-        (emittingInput) => (input.value = emittingInput.inputValue)
+      @emitting-input-data="
+        (emittedInputData) => {
+          thingFormData.inputs[emittedInputData.name] = emittedInputData;
+          emits('emittingThingFormData', thingFormData);
+        }
       "
     />
   </form>
-  {{ thingFormInputs.inputs }}
 </template>

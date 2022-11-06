@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import ThingForm from "@/components/ThingForm.vue";
+import PersonForm from "@/components/PersonForm.vue";
 </script>
 <template>
-  <ThingForm />
+  <PersonForm />
 </template>
