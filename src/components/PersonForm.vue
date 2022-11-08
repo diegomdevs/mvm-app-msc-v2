@@ -3,7 +3,7 @@ import type IInputToBeEmitted from "@/interfaces/IInputToBeEmitted";
 import { reactive } from "vue";
 import FormInput from "./FormInput.vue";
 import ThingForm from "./ThingForm.vue";
-const personFormInputs: { inputs: any } = reactive({
+const personFormInputs = reactive({
   inputs: {
     middleName: {
       name: "middleName",
@@ -96,3 +96,10 @@ const personFormUpdater = (emittedThingFormData: {
     />
   </form>
 </template>
+<style scoped>
+form.person-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+</style>

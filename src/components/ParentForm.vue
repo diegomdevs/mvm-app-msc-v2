@@ -1,65 +1,87 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { reactive } from "vue";
+import CustomerForm from "./CustomerForm.vue";
+import FormInput from "./FormInput.vue";
+const parentFormInputs = reactive({
+  inputs: {
+    isAlive: {
+      name: "isAlive",
+      type: "checkbox",
+      placeholder: "vive?",
+      value: "true",
+    },
+  },
+});
+const parentFormData: {
+  inputs: {
+    [key: string]: {
+      name: string;
+      value: string | number | Date | boolean;
+    };
+  };
+} = reactive({
+  inputs: {},
+});
+const emits = defineEmits<{
+  (
+    e: "emittingParentFormData",
+    emittedParentFormData: {
+      inputs: {
+        [key: string]: {
+          name: string;
+          value: string | number | Date | boolean;
+        };
+      };
+    }
+  ): void;
+}>();
+const parentFormDataUpdater = (emittedCustomerFormData: {
+  inputs: {
+    [key: string]: {
+      name: string;
+      value: string | number | Date | boolean;
+    };
+  };
+}) => {
+  for (const key in emittedCustomerFormData.inputs) {
+    parentFormData.inputs[key] = emittedCustomerFormData.inputs[key];
+    emits("emittingParentFormData", parentFormData);
+  }
+};
+</script>
 <template>
-  <form :class="form.className">
+  <form class="parent-form">
     <CustomerForm
-      :customer-type="customerType"
-      :input-values="customerInputValues"
-      v-model="customerInputValues"
+      @emitting-customer-form-data="
+        (emittedCustomerFormData) => {
+          parentFormDataUpdater(emittedCustomerFormData);
+        }
+      "
     />
     <FormInput
-      v-for="input in parentFormInputs"
-      :input-name="input.name"
-      :input-type="input.type"
-      :input-placeholder="input.placeholder"
-      :input-value="input.value"
-      :key="input.name"
+      v-for="parentFormInput in parentFormInputs.inputs"
+      :name="parentFormInput.name"
+      :type="parentFormInput.type"
+      :placeholder="parentFormInput.placeholder"
+      :value="parentFormInput.value"
+      :key="parentFormInput.name"
+      @emitting-input-data="
+        (inputDataToBeEmitted) => {
+          parentFormData.inputs[inputDataToBeEmitted.name] =
+            inputDataToBeEmitted;
+          emits('emittingParentFormData', parentFormData);
+        }
+      "
     />
+    {{ parentFormData.inputs }}
   </form>
 </template>
 
 <style scoped>
-main {
+form.parent-form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  row-gap: 40px;
   padding: 15px 0;
-}
-input[type="text" i],
-input[type="date" i] {
-  width: 220px;
-  height: 45px;
-  border-radius: 4px;
-  padding: 5px;
-  border: 1px solid var(--primary-blue);
-}
-input[type="checkbox" i] {
-  display: block;
-  width: 30px;
-  height: 30px;
-}
-h1 {
-  text-align: center;
-}
-h1.cargando {
-  color: white;
-}
-h1.listo {
-  color: green;
-}
-h1.error {
-  color: red;
-}
-button {
-  width: 100px;
-  height: 40px;
-  margin: 50px auto;
-  border-radius: 4px;
-  border: 1px solid var(--secondary-blue);
-  font-size: 1.1rem;
-  background: var(--primary-blue);
-  color: var(--font-color-white);
-  cursor: pointer;
 }
 </style>

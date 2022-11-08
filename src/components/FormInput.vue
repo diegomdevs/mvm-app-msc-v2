@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import useToUpperLowerCase from "@/logic/use-to-upper-lower-case";
-import { reactive, toRefs } from "vue";
+import { reactive, ref, toRefs } from "vue";
 interface IFormInputProps {
   name: string;
   placeholder: string | undefined;
@@ -26,9 +26,11 @@ const emits = defineEmits<{
     }
   ): void;
 }>();
+let labelClass = ref("input-container");
+if (inputAttrs.type === "checkbox") labelClass.value = "checkbox-container";
 </script>
 <template>
-  <label class="input-container">
+  <label :class="labelClass">
     <h3>
       {{ inputAttrs.placeholder }}
     </h3>
@@ -46,16 +48,24 @@ const emits = defineEmits<{
   </label>
 </template>
 <style scoped>
-label.input-container {
+label.input-container,
+label.checkbox-container {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: flex-start;
   height: auto;
   margin-top: 30px;
-  font-size: 1.5rem;
+  font-size: 1.1rem;
 }
-label.input-container > input[type="checkbox" i] {
+label.checkbox-container {
+  flex-direction: row;
+  align-items: center;
+  row-gap: 15px;
+  width: 130px;
+}
+label.checkbox-container > input[type="checkbox" i] {
+  display: block;
   height: 20px;
   width: 20px;
 }

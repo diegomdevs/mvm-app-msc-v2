@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import PersonForm from "@/components/PersonForm.vue";
+import RepresentativeForm from "@/components/RepresentativeForm.vue";
 </script>
 <template>
-  <PersonForm />
+  <RepresentativeForm />
 </template>

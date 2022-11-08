@@ -56,3 +56,10 @@ const emits = defineEmits<{
     />
   </form>
 </template>
+<style scoped>
+form.thing-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+</style>
