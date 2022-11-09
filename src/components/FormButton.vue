@@ -2,18 +2,19 @@
 import { reactive, toRefs } from "vue";
 import useToUpperLowerCase from "@/logic/use-to-upper-lower-case";
 interface ButtonProps {
-  buttonName: string;
+  name: string;
 }
 const button = reactive({
   className: "form--button",
 });
 const props = defineProps<ButtonProps>();
-const { buttonName } = toRefs(props);
+const { name } = toRefs(props);
+const buttonAttrs = reactive({
+  name: useToUpperLowerCase(name.value),
+});
 </script>
 <template>
-  <button :class="button.className">
-    {{ useToUpperLowerCase(buttonName) }}
-  </button>
+  <button :class="button.className">{{ buttonAttrs.name }}</button>
 </template>
 <style scoped>
 button.form--button {

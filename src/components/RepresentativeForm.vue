@@ -24,7 +24,7 @@ const representativeFormData: {
 });
 const emits = defineEmits<{
   (
-    e: "emittingRepresentativeFormData",
+    e: "emittingFormData",
     emittedRepresentativeFormData: {
       inputs: {
         [key: string]: {
@@ -55,6 +55,7 @@ const emits = defineEmits<{
         (inputDataToBeEmitted) => {
           representativeFormData.inputs[inputDataToBeEmitted.name] =
             inputDataToBeEmitted;
+          emits('emittingFormData', representativeFormData);
         }
       "
     />

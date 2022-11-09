@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { reactive } from "vue";
-import CustomerForm from "./CustomerForm.vue";
+import AdultForm from "./AdultForm.vue";
 import FormInput from "./FormInput.vue";
 const parentFormInputs = reactive({
   inputs: {
     isAlive: {
       name: "isAlive",
       type: "checkbox",
-      placeholder: "vive?",
+      placeholder: "¿vive?",
       value: "true",
     },
   },
@@ -20,11 +20,16 @@ const parentFormData: {
     };
   };
 } = reactive({
-  inputs: {},
+  inputs: {
+    isAlive: {
+      name: "isAlive",
+      value: "true",
+    },
+  },
 });
 const emits = defineEmits<{
   (
-    e: "emittingParentFormData",
+    e: "emittingFormData",
     emittedParentFormData: {
       inputs: {
         [key: string]: {
@@ -45,16 +50,16 @@ const parentFormDataUpdater = (emittedCustomerFormData: {
 }) => {
   for (const key in emittedCustomerFormData.inputs) {
     parentFormData.inputs[key] = emittedCustomerFormData.inputs[key];
-    emits("emittingParentFormData", parentFormData);
+    emits("emittingFormData", parentFormData);
   }
 };
 </script>
 <template>
   <form class="parent-form">
-    <CustomerForm
-      @emitting-customer-form-data="
-        (emittedCustomerFormData) => {
-          parentFormDataUpdater(emittedCustomerFormData);
+    <AdultForm
+      @emitting-adult-form-data="
+        (emittedAdultFormData) => {
+          parentFormDataUpdater(emittedAdultFormData);
         }
       "
     />
@@ -67,13 +72,12 @@ const parentFormDataUpdater = (emittedCustomerFormData: {
       :key="parentFormInput.name"
       @emitting-input-data="
         (inputDataToBeEmitted) => {
-          parentFormData.inputs[inputDataToBeEmitted.name] =
-            inputDataToBeEmitted;
-          emits('emittingParentFormData', parentFormData);
+          parentFormData.inputs[inputDataToBeEmitted.name].value =
+            !inputDataToBeEmitted.value;
+          emits('emittingFormData', parentFormData);
         }
       "
     />
-    {{ parentFormData.inputs }}
   </form>
 </template>
 

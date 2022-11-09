@@ -8,13 +8,13 @@ const studentFormInputs = reactive({
     birthday: {
       name: "birthday",
       type: "date",
-      placeholder: "fecha de naci.",
+      placeholder: "fecha de nacimiento",
       value: new Date(),
     },
     birthplace: {
       name: "birthplace",
       type: "text",
-      placeholder: "lugar de naci.",
+      placeholder: "lugar de nacimiento",
       value: "",
     },
     municipality: {
@@ -63,7 +63,7 @@ const studentFormData: {
 
 const emits = defineEmits<{
   (
-    e: "emittingCustomerFormData",
+    e: "emittingFormData",
     emittedStudentFormData: {
       inputs: {
         [key: string]: {
@@ -87,7 +87,7 @@ const studentFormDataUpdater = (emittedCustomerFormData: {
   for (const key in emittedCustomerFormData.inputs) {
     studentFormData.inputs[key] = emittedCustomerFormData.inputs[key];
   }
-  emits("emittingCustomerFormData", studentFormData);
+  emits("emittingFormData", studentFormData);
 };
 </script>
 <template>
@@ -109,6 +109,7 @@ const studentFormDataUpdater = (emittedCustomerFormData: {
       @emitting-input-data="
         (inputDataEmitted) => {
           studentFormData.inputs[inputDataEmitted.name] = inputDataEmitted;
+          emits('emittingFormData', studentFormData);
         }
       "
     />
