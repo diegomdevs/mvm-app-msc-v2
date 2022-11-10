@@ -1,15 +1,17 @@
 <script setup lang="ts">
 import api from "@/api/api";
 import FormButton from "@/components/FormButton.vue";
+import LoadingModal from "@/components/LoadingModal.vue";
 import { defineAsyncComponent, reactive, ref } from "vue";
-import { useRoute } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
+const routes = useRouter();
 const route = useRoute();
 const entityForm: any = reactive({
   parent: "ParentForm",
   representative: "RepresentativeForm",
   student: "StudentForm",
 });
-const entityFormTitle: { [key: string]: string } = reactive({
+const entityFormTitles: { [key: string]: string } = reactive({
   parent: "padre",
   representative: "representante",
   student: "estudiante",
@@ -17,7 +19,7 @@ const entityFormTitle: { [key: string]: string } = reactive({
 
 const formToBeRendered: any = ref(route.params.entityForm);
 const entityFormTitleToBeRendered = ref(
-  entityFormTitle[formToBeRendered.value]
+  entityFormTitles[formToBeRendered.value]
 );
 const formUrlToBeRendered = ref(entityForm[formToBeRendered.value]);
 const EntityForm = defineAsyncComponent(
@@ -36,21 +38,24 @@ const postDataUpdater = (emittedFormData: any) => {
 };
 const message = ref();
 const sendDataAPI = () => {
-  message.value = "cargando...";
+  message.value = "cargando";
   api
     .post(formToBeRendered.value + "s", postData.data)
     .then((ok) => {
       console.log(ok.data);
-      message.value = "bien";
+      message.value = undefined;
+      routes.back();
     })
-    .catch((error) => {
+    .catch((error: any) => {
       console.log(error.response.data.message);
-      message.value = "mal";
+      message.value =
+        "Error, verifique los datos ingresados o intente mas tarde";
     });
 };
 </script>
 <template>
-  <main>
+  <LoadingModal v-if="message === 'cargando'" :message="message" />
+  <main v-else>
     <h1>Datos del {{ entityFormTitleToBeRendered }}</h1>
     <EntityForm
       @emitting-form-data="(emittedFormData: any) => {
@@ -59,7 +64,9 @@ const sendDataAPI = () => {
     />
     <FormButton @click="sendDataAPI()" name="registrar" />
     {{ postData.data }}
-    {{ message }}
+    <h2>
+      {{ message }}
+    </h2>
   </main>
 </template>
 <style scoped>

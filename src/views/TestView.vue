@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import RepresentativeForm from "@/components/RepresentativeForm.vue";
+import LoadingModal from "@/components/LoadingModal.vue";
 </script>
 <template>
-  <RepresentativeForm />
+  <LoadingModal :message="'cargando'" />
 </template>
